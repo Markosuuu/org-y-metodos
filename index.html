@@ -11,9 +11,11 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="container mt-5 py-3">
+    <div class="container my-md-5 py-3">
+      <h1 class="text-center mb-5">Liquidación de sueldo </h1>
       <div class="row">
         <!-- Nombre -->
         <div class="col-12">
@@ -48,20 +50,22 @@
         </div>
 
         <hr />
-        <!-- Presentismo -->
-        <div class="col-4">
+        <!-- Faltas injustificadas -->
+        <div class="col-12 col-md-4">
           <div class="input-group mb-3">
             <span class="input-group-text">Faltas sin justificar</span>
             <input type="number" class="form-control faltas-no-justificadas" />
           </div>
         </div>
-        <div class="col-4">
+        <!-- Faltas por licencia -->
+        <div class="col-12 col-md-4">
           <div class="input-group mb-3">
-            <span class="input-group-text">Faltas justificadas</span>
+            <span class="input-group-text">Licencias tomadas</span>
             <input type="number" class="form-control faltas-justificadas" />
           </div>
         </div>
-        <div class="col-4">
+        <!-- Faltas en feriados -->
+        <div class="col-12 col-md-4">
           <div class="input-group mb-3">
             <span class="input-group-text">Faltas en feriados</span>
             <input type="number" class="form-control faltas-feriados" />
@@ -69,14 +73,15 @@
         </div>
         <hr />
 
-        <!-- Horas extras -->
-        <div class="col-6">
+        <!-- Horas extras al 50%-->
+        <div class="col-12 col-lg-6">
           <div class="input-group mb-3">
             <span class="input-group-text">Horas extras (Lunes-viernes)</span>
             <input type="number" class="form-control extrasAl50" />
           </div>
         </div>
-        <div class="col-6">
+        <!-- Horas extras al 100%-->
+        <div class="col-12 col-lg-6">
           <div class="input-group mb-3">
             <span class="input-group-text">Horas extras (Sábado-Domingo-Feriado)</span>
             <input type="number" class="form-control extrasAl100" />
