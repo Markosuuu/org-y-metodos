@@ -11,16 +11,24 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        background: rgb(89, 156, 255);
+      }
+
+      .container {
+        background-color: rgb(0, 43, 99);
+      }
+    </style>
   </head>
   <body>
-    <div class="container my-md-5 py-3">
-      <h1 class="text-center mb-5">Liquidación de sueldo </h1>
+    <div class="container text-light rounded p-5 my-md-5 py-3">
+      <h1 class="text-center mb-5">Liquidación de sueldo</h1>
       <div class="row">
         <span class="fw-bold">Datos personales:</span>
         <!-- Nombre -->
         <div class="col-12 col-lg-6">
-          <div class="input-group mb-3">
+          <div class="input-group mb-3 input-group-dark">
             <span class="input-group-text">Nombre</span>
             <input type="text" class="form-control nombre" />
           </div>
@@ -50,12 +58,11 @@
           </div>
         </div>
 
-        
         <!-- Fecha de ingreso -->
         <div class="col-12 col-lg-6">
           <div class="input-group mb-3">
             <span class="input-group-text">¿Qué fecha de ingreso?</span>
-            <input type="date" class="form-control fecha">
+            <input type="date" class="form-control fecha" />
           </div>
         </div>
 
@@ -102,13 +109,117 @@
         </div>
       </div>
       <!-- Botón enviar -->
-      <button class="btn btn-primary" onclick="liquidacion()">Enviar datos</button>
+      <button class="btn btn-primary" onclick="liquidacion()">
+        Enviar datos
+      </button>
 
       <!-- Salida de datos -->
-      <div class="cont mt-3">
+      <div class="cont d-none mt-3">
+        <div class="bg-dark text-light text-center fw-bold fs-3 pb-1">
+          Liquidacion De Sueldo
+        </div>
+        <table class="table table-dark table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">Fecha de emisión</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Nro Legajo</th>
+              <th scope="col">Fecha de ingreso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!-- acá irian las variables-->
+              <th class="fechaTabla"></th>
+              <td class="nombreTabla"></td>
+              <td class="apellidoTabla"></td>
+              <td class="legajoTabla"></td>
+              <td class="inicioTabla"></td>
+            </tr>
+          </tbody>
+        </table>
 
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Concepto</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Porcentaje</th>
+              <th scope="col">Retenciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Sueldo básico</th>
+              <td class="sueldoBasicoTabla">$0.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Presentismo</th>
+              <td class="presentismoTabla">$0.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Productividad</th>
+              <td class="productividadTabla">$0.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Horas extras</th>
+              <td class="hExtrasTabla">$0.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Jubilacion</th>
+              <td></td>
+              <td>%11</td>
+              <td class="jubilacionTabla">$0.00</td>
+            </tr>
+            <tr>
+              <th scope="row">Obra social</th>
+              <td></td>
+              <td>%3</td>
+              <td class="obraSocialTabla">$0.00</td>
+            </tr>
+            <tr>
+              <th scope="row">LEG19032</th>
+              <td></td>
+              <td>%3</td>
+              <td class="leyTabla">$0.00</td>
+            </tr>
+            <tr>
+              <th scope="row">Aguinaldo</th>
+              <td class="aguinaldoTabla">$0.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Días que corresponden de vacaiones</th>
+              <td class="vacacionesTabla">0</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Remuneración por vacaciones</th>
+              <td class="remuneracionVacacionesTabla">$0.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Total bruto:</th>
+              <td class="sueldoBrutoTabla">$0.00</td>
+              <td>Total neto:</td>
+              <td class="sueldoNetoTabla">$0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
     <!-- Scripts -->
     <script src="main.js"></script>
     <script

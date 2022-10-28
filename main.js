@@ -159,189 +159,98 @@ function sueldoNeto (sueldo) {
 
   let jubilacionLey = sueldoBruto(sueldo) * (11/100);
 
-  return Number(sueldoBruto(sueldo) - obraSocialYLey - obraSocialYLey - jubilacionLey); 
+  return Number(sueldoBruto(sueldo) - obraSocialYLey * 2 - jubilacionLey); 
 }
 
 // Función principal que muestra toda la info al apretar el botón
 const liquidacion = () => {
-    // cont.textContent = "";
-  // document.querySelector(".cont").classList.remove("d-none");
+  cont.classList.remove("d-none");
 
-  const sueldo = document.querySelector(".sueldo").value;
+  // Sueldo básico
+  let sueldo = document.querySelector(".sueldo").value;
 
-  // // Nombre
+  // Nombre
   let nombre = document.querySelector(".nombre").value;
 
-  // // Apellido
+  // Apellido
   let apellido = document.querySelector(".apellido").value;
 
-  // // Legajo
-
+  // Legajo
   let legajo = document.querySelector(".legajo").value;
 
-
+  // Ingreso del trabajador
   let ingreso = (new Date(document.querySelector(".fecha").value))
 
+  // Retenciones
+  let jubilacionLey = sueldoBruto(sueldo) * (11/100);
   let obraSocialYLey = sueldoBruto(sueldo) * (3/100);
 
-  let jubilacionLey = sueldoBruto(sueldo) * (11/100);
+  // Tomando los valores importantes de la fecha
+  let diai = ingreso.getDate()
+  let mesi = ingreso.getMonth() + 1
+  let anioi = ingreso.getFullYear()
 
+  // Concatenando la fecha de ingreso
+  let fe = `${diai+1}/${mesi}/${anioi}`
 
-  let diai= ingreso.getDate()
-  let mesi= ingreso.getMonth()+1
-  let anioi= ingreso.getFullYear()
-
-  let fe = `${diai}/${mesi}/${anioi}`
-
+  //toma el dia de hoy 
   let hoy = new Date()
-  //toma el dia 
 
   let dia = hoy.getDate();
-
   // `getMonth()` devuelve el mes (de 0 a 11)
   let mes = hoy.getMonth() + 1;
-
   // `getFullYear()` devuelve el año completo
   let anio = hoy.getFullYear();
 
   let fecha= `${dia}/${mes}/${anio}`
+  
+  // Tomando las campos de la tabla
+  const fechaTabla = document.querySelector(".fechaTabla");
+  const nombreTabla = document.querySelector(".nombreTabla");
+  const apellidoTabla = document.querySelector(".apellidoTabla");
+  const legajoTabla = document.querySelector(".legajoTabla");
+  const inicioTabla = document.querySelector(".inicioTabla");
+  
+  // Ingresando valores en la tabla
+  fechaTabla.textContent = fecha;
+  nombreTabla.textContent = nombre;
+  apellidoTabla.textContent = apellido;
+  legajoTabla.textContent = legajo;
+  inicioTabla.textContent = fe;
 
-  cont.innerHTML += `
-    <div class="row border border-white border-2 bg-dark text-white">
-    <!-- Campos del primer row -->
-      <div class="col-12 border border-white border-2 d-flex justify-content-center">
-        <h1>Recibo de sueldo</h1>
-      </div>
+  // Sueldo básico, presentismo, productividad y horas extras
+  const sueldoBasicoTabla = document.querySelector(".sueldoBasicoTabla");
+  const presentismoTabla = document.querySelector(".presentismoTabla");
+  const productividadTabla = document.querySelector(".productividadTabla");
+  const hExtrasTabla = document.querySelector(".hExtrasTabla");
 
-      <div class="col-2 border border-white border-1  d-flex justify-content-center ">
-        <h6>Fecha de emision</h6>
-      </div>
+  sueldoBasicoTabla.textContent = `$${sueldoBasico(sueldo)}`;
+  presentismoTabla.textContent = `$${presentismo(sueldo)}`;
+  productividadTabla.textContent = `$${productividad(sueldo)}`;
+  hExtrasTabla.textContent = `$${hsExtras(sueldo)}`;
 
-      <div class="col-3 border border-white border-1  d-flex justify-content-center ">
-        <h6>Nombre</h6>
-      </div>
+  // Retenciones
+  const jubilacionTabla = document.querySelector(".jubilacionTabla");
+  const obraSocialTabla = document.querySelector(".obraSocialTabla");
+  const leyTabla = document.querySelector(".leyTabla");
 
-      <div class="col-3 border border-white border-1  d-flex justify-content-center ">
-        <h6>Apellido</h6>
-      </div>
+  jubilacionTabla.textContent = `$${jubilacionLey}`;
+  obraSocialTabla.textContent = `$${obraSocialYLey}`;
+  leyTabla.textContent = `$${obraSocialYLey}`;
 
-      <div class="col-2 border border-white border-1  d-flex justify-content-center ">
-        <h6>N° de legajo</h6>
-      </div>
+  // Aguinaldo y vacaciones
+  const aguinaldoTabla = document.querySelector(".aguinaldoTabla");
+  const vacacionesTabla = document.querySelector(".vacacionesTabla");
+  const remuneracionVacacionesTabla = document.querySelector(".remuneracionVacacionesTabla");
 
-      <div class="col-2 border border-white border-1  d-flex justify-content-center ">
-        <h6>Fecha de ingreso</h6>
-      </div>
+  aguinaldoTabla.textContent = `$${aguinaldo(sueldo)}`;
+  vacacionesTabla.textContent = `${diasVacaciones()}`;
+  remuneracionVacacionesTabla.textContent = `$${pagoVacaciones(sueldo)}`;
+  
+  // Sueldo bruto y neto
+  const sueldoBrutoTabla = document.querySelector(".sueldoBrutoTabla");
+  const sueldoNetoTabla = document.querySelector(".sueldoNetoTabla");
 
-    <!-- Datos principales-->
-      <div class="col-2 border border-white border-1  d-flex justify-content-center ">
-        <span>${fecha}</span>
-      </div>
-
-      <div class="col-3 border border-white border-1  d-flex justify-content-center ">
-        <span>${nombre}</span>
-      </div>
-
-      <div class="col-3 border border-white border-1  d-flex justify-content-center ">
-        <span>${apellido}</span>
-      </div>
-
-      <div class="col-2 border border-white border-1  d-flex justify-content-center ">
-        <span>${legajo}</span>
-      </div>
-
-      <div class="col-2 border border-white border-1  d-flex justify-content-center ">
-        <span>${fe}</span>
-      </div>
-  </div>
-    <div class="row mt-4 border border-white border-2 bg-dark text-white">
-      <!-- Campos -->
-        <div class="col-3 border border-white d-flex justify-content-center">
-          <h6>Concepto</h6>
-        </div>
-        <div class="col-4 border border-white d-flex justify-content-center">
-          <h6>Monto</h6>
-        </div>
-        <div class="col-1 border border-white d-flex justify-content-center">
-          <h6>Porcentaje</h6>
-        </div>
-        <div class="col-4 border border-white d-flex justify-content-center">
-          <h6>Retenciones</h6>
-        </div>
-
-      <!-- CONCEPTO -->
-      <div class="col-3 border border-white d-flex justify-content-center g-0">
-        <div class="row w-100">
-          <div class="col-12 border border-white"><h6>Sueldo basico</h6></div>
-          <div class="col-12 border border-white"><h6>Presentismo</h6></div>
-          <div class="col-12 border border-white"><h6>Productividad</h6></div>
-          <div class="col-12 border border-white"><h6>Horas extras</h6></div>
-          <div class="col-12 border border-white"><h6>Jubilacion</h6></div>
-          <div class="col-12 border border-white"><h6>Obra social</h6></div>
-          <div class="col-12 border border-white"><h6>LEG19032</h6></div>
-          <div class="col-12 border border-white"><h6>Aguinaldo</h6></div>
-          <div class="col-12 border border-white"><h6>Dias que les corresponde de vacaciones</h6></div>
-          <div class="col-12 border border-white"><h6>Remuneracion por vacaciones</h6></div>
-        </div>
-      </div>
-
-      <!-- MONTO -->
-
-      <div class="col-4 g-0 border border-white d-flex justify-content-center">
-        <div class="row w-100">
-          <div class="col-12 border border-white"><h6>$${sueldoBasico(sueldo)}</h6></div>
-          <div class="col-12 border border-white"><h6>$${parseInt(presentismo(sueldo)).toFixed(2)}</h6></div>
-          <div class="col-12 border border-white"><h6>$${parseInt(productividad(sueldo)).toFixed(2)}</h6></div>
-          <div class="col-12 border border-white"><h6>$${hsExtras(sueldo)}</h6></div>
-          <div class="col-12 border border-white p-2"><h6></h6></div>
-          <div class="col-12 border border-white p-2"><h6></h6></div>
-          <div class="col-12 border border-white p-2"><h6></h6></div>
-          <div class="col-12 border border-white"><h6>$${aguinaldo(sueldo)}</h6></div>
-          <div class="col-12 border border-white"><h6>${diasVacaciones()}</h6></div>
-          <div class="col-12 border border-white"><h6>$${pagoVacaciones(sueldo)}</h6></div>
-        </div>        
-      </div>
-
-      <!-- PORCENTAJE -->
-
-      <div class="col-1 g-0 border border-white d-flex justify-content-center">
-        <div class="row w-100">
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6>%11</h6></div>
-          <div class="col-12 border border-white"><h6>%3</h6></div>
-          <div class="col-12 border border-white"><h6>%3</h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-        </div>        
-      </div>
-
-      <!-- RETENECIONES  -->
-
-      <div class="col-4 g-0 border border-white d-flex justify-content-center">
-        <div class="row w-100">
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6></h6></div>
-          <div class="col-12 border border-white"><h6>$${parseInt(jubilacionLey).toFixed(2)}</h6></div>
-          <div class="col-12 border border-white"><h6>$${parseInt(obraSocialYLey).toFixed(2)}</h6></div>
-          <div class="col-12 border border-white"><h6>$${parseInt(obraSocialYLey).toFixed(2)}</h6></div>
-          <div class="col-12 border border-white"></div>
-          <div class="col-12 border border-white"></div>
-          <div class="col-12 border border-white"></div>
-        </div>
-      </div>
-      
-      <div class="col-3 border border-white"><h5>Total bruto:</h5></div>
-      <div class="col-4 border border-white d-flex justify-content-center"><p>$${sueldoBruto(sueldo)}</p></div>
-      <div class="col-2 border border-white"><h5>Neto a percibir:</h5></div>
-      <div class="col-3 border border-white d-flex justify-content-center"><p>$${sueldoNeto(sueldo)}</p></div>
-    </div>
-  </div>
-  </div>
-  `
+  sueldoBrutoTabla.textContent = `$${sueldoBruto(sueldo)}`;
+  sueldoNetoTabla.textContent = `$${sueldoNeto(sueldo)}`;
 };
