@@ -60,6 +60,7 @@ function faltaFeriado(sueldo) {
   }
 }
 
+// Función para calcular las horas extras en 50% y 100%
 function hsExtras(sueldo){
   let h50 = document.querySelector(".extrasAl50").value;
   let h100 = document.querySelector(".extrasAl100").value;
@@ -75,7 +76,7 @@ function hsExtras(sueldo){
   }
 }
 
-// Funcion para calcular el sueldo bruto
+// Función para calcular el sueldo bruto
 function sueldoBruto(sueldo) {
   return (
     Number(sueldoBasico(sueldo)) +
@@ -85,6 +86,15 @@ function sueldoBruto(sueldo) {
     Number(faltaFeriado(sueldo)) +
     Number(hsExtras(sueldo))
   );
+}
+
+//Función para calcular el sueldo neto
+function sueldoNeto (sueldo) {
+  let obraSocialYLey = sueldoBruto(sueldo) * (3/100);
+
+  let jubilacionLey = sueldoBruto(sueldo) * (11/100);
+
+  return Number(sueldoBruto(sueldo) - obraSocialYLey - jubilacionLey); 
 }
 
 // Función principal que muestra toda la info al apretar el botón
@@ -110,15 +120,26 @@ const liquidacion = () => {
 
   // Sueldo básico
   const pSueldo = document.createElement("p");
-  pSueldo.textContent = `Sueldo básico: ${sueldoBasico(sueldo)}`;
+  pSueldo.textContent = `Sueldo básico: $${sueldoBasico(sueldo)}`;
 
   // Sueldo bruto
   const pSueldoBruto = document.createElement("p");
-  pSueldoBruto.textContent = `Sueldo bruto: ${sueldoBruto(sueldo)}`;
+  pSueldoBruto.textContent = `Sueldo bruto: $${sueldoBruto(sueldo)}`;
+  
+  // Sueldo neto
+  const pSueldoNeto = document.createElement("p");
+  pSueldoNeto.textContent = `Sueldo neto: $${sueldoNeto(sueldo)}`;
+  
+  // Sueldo neto
+  const pAguinaldo = document.createElement("p");
+  pAguinaldo.textContent = `Aguinaldo: $${sueldoBruto(sueldo)/2}`;
 
+  // Agregando contenido al container
   cont.appendChild(pNombre);
   cont.appendChild(pApellido);
   cont.appendChild(pLegajo);
   cont.appendChild(pSueldo);
   cont.appendChild(pSueldoBruto);
+  cont.appendChild(pSueldoNeto);
+  cont.appendChild(pAguinaldo);
 };
