@@ -11,15 +11,7 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
-    <style>
-      body {
-        background: rgb(89, 156, 255);
-      }
-
-      .container {
-        background-color: rgb(0, 43, 99);
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container text-light rounded p-5 my-md-5 py-3">
@@ -30,7 +22,7 @@
         <div class="col-12 col-lg-6">
           <div class="input-group mb-3 input-group-dark">
             <span class="input-group-text">Nombre</span>
-            <input type="text" class="form-control nombre" />
+            <input type="text" class="form-control nombre" required />
           </div>
         </div>
 
@@ -38,7 +30,7 @@
         <div class="col-12 col-lg-6">
           <div class="input-group mb-3">
             <span class="input-group-text">Apellido</span>
-            <input type="text" class="form-control apellido" />
+            <input type="text" class="form-control apellido" required />
           </div>
         </div>
 
@@ -46,7 +38,7 @@
         <div class="col-12 col-lg-6">
           <div class="input-group mb-3">
             <span class="input-group-text">Nro Legajo</span>
-            <input type="number" class="form-control legajo" />
+            <input type="number" class="form-control legajo" required />
           </div>
         </div>
 
@@ -54,7 +46,7 @@
         <div class="col-12 col-lg-6">
           <div class="input-group mb-3">
             <span class="input-group-text">Sueldo básico</span>
-            <input type="number" class="form-control sueldo" />
+            <input type="number" class="form-control sueldo" required />
           </div>
         </div>
 
@@ -62,7 +54,7 @@
         <div class="col-12 col-lg-6">
           <div class="input-group mb-3">
             <span class="input-group-text">¿Qué fecha de ingreso?</span>
-            <input type="date" class="form-control fecha" />
+            <input type="date" class="form-control fecha" required />
           </div>
         </div>
 
@@ -107,7 +99,59 @@
             <input type="number" class="form-control extrasAl100" />
           </div>
         </div>
+        <hr />
+
+        <!-- Opción calcular aguinaldo -->
+        <div class="col-6" id="aguinaldo">
+          <span>¿Calcular aguinaldo?</span><br />
+          <div class="form-check ms-3">
+            <input
+              class="form-check-input radioAguinaldo"
+              id="flexRadioDefault1"
+              type="radio"
+              name="aguinaldo"
+              value="Si"
+            />
+            <label class="form-check-label" for="flexRadioDefault1"> Si </label>
+          </div>
+          <div class="form-check ms-3">
+            <input
+              class="form-check-input radioAguinaldo"
+              id="flexRadioDefault2"
+              type="radio"
+              name="aguinaldo"
+              value="No"
+            />
+            <label class="form-check-label" for="flexRadioDefault2"> No </label>
+          </div>
+        </div>
+
+        <!--  Opciones calcular vacaciones -->
+        <div class="col-6">
+          <span class="mt-4">¿Calcular vacaciones?</span><br />
+          <div class="form-check ms-3">
+            <input
+              class="form-check-input radioVacaciones"
+              id="RadioDefault1"
+              type="radio"
+              name="vacaciones"
+              value="Si"
+            />
+            <label class="form-check-label" for="RadioDefault1"> Si </label>
+          </div>
+          <div class="form-check ms-3 mb-3">
+            <input
+              class="form-check-input radioVacaciones"
+              id="RadioDefault2"
+              type="radio"
+              name="vacaciones"
+              value="No"
+            />
+            <label class="form-check-label" for="RadioDefault2"> No </label>
+          </div>
+        </div>
       </div>
+      
       <!-- Botón enviar -->
       <button class="btn btn-primary" onclick="liquidacion()">
         Enviar datos
@@ -192,19 +236,19 @@
               <td>%3</td>
               <td class="leyTabla">$0.00</td>
             </tr>
-            <tr>
+            <tr class="aguinaldoRow d-none">
               <th scope="row">Aguinaldo</th>
               <td class="aguinaldoTabla">$0.00</td>
               <td></td>
               <td></td>
             </tr>
-            <tr>
+            <tr class="vacacionesRow d-none">
               <th scope="row">Días que corresponden de vacaiones</th>
               <td class="vacacionesTabla">0</td>
               <td></td>
               <td></td>
             </tr>
-            <tr>
+            <tr class="vacacionesRow2 d-none">
               <th scope="row">Remuneración por vacaciones</th>
               <td class="remuneracionVacacionesTabla">$0.00</td>
               <td></td>

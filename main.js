@@ -224,33 +224,55 @@ const liquidacion = () => {
   const productividadTabla = document.querySelector(".productividadTabla");
   const hExtrasTabla = document.querySelector(".hExtrasTabla");
 
-  sueldoBasicoTabla.textContent = `$${sueldoBasico(sueldo)}`;
-  presentismoTabla.textContent = `$${presentismo(sueldo)}`;
-  productividadTabla.textContent = `$${productividad(sueldo)}`;
-  hExtrasTabla.textContent = `$${hsExtras(sueldo)}`;
+  sueldoBasicoTabla.textContent = `$${sueldoBasico(sueldo).toFixed(2)}`;
+  presentismoTabla.textContent = `$${presentismo(sueldo).toFixed(2)}`;
+  productividadTabla.textContent = `$${productividad(sueldo).toFixed(2)}`;
+  hExtrasTabla.textContent = `$${hsExtras(sueldo).toFixed(2)}`;
 
   // Retenciones
   const jubilacionTabla = document.querySelector(".jubilacionTabla");
   const obraSocialTabla = document.querySelector(".obraSocialTabla");
   const leyTabla = document.querySelector(".leyTabla");
 
-  jubilacionTabla.textContent = `$${jubilacionLey}`;
-  obraSocialTabla.textContent = `$${obraSocialYLey}`;
-  leyTabla.textContent = `$${obraSocialYLey}`;
+  jubilacionTabla.textContent = `$${jubilacionLey.toFixed(2)}`;
+  obraSocialTabla.textContent = `$${obraSocialYLey.toFixed(2)}`;
+  leyTabla.textContent = `$${obraSocialYLey.toFixed(2)}`;
+
+  // Valores de los radioButtons
+  const radioAguinaldo = document.querySelector('input[name="aguinaldo"]:checked').value;
+  const aguinaldoRow = document.querySelector(".aguinaldoRow");
+
+  if (radioAguinaldo === 'Si') {
+    aguinaldoRow.classList.remove("d-none")
+  } else if (radioAguinaldo === 'No') {
+    aguinaldoRow.classList.add("d-none")
+  }
+
+  const radioVacaciones = document.querySelector('input[name="vacaciones"]:checked').value;
+  const vacacionesRow = document.querySelector(".vacacionesRow");
+  const vacacionesRow2 = document.querySelector(".vacacionesRow2");
+
+  if (radioVacaciones === 'Si') {
+    vacacionesRow.classList.remove("d-none")
+    vacacionesRow2.classList.remove("d-none")
+  } else if (radioVacaciones === 'No') {
+    vacacionesRow.classList.add("d-none")
+    vacacionesRow2.classList.add("d-none")
+  }
 
   // Aguinaldo y vacaciones
   const aguinaldoTabla = document.querySelector(".aguinaldoTabla");
   const vacacionesTabla = document.querySelector(".vacacionesTabla");
   const remuneracionVacacionesTabla = document.querySelector(".remuneracionVacacionesTabla");
 
-  aguinaldoTabla.textContent = `$${aguinaldo(sueldo)}`;
+  aguinaldoTabla.textContent = `$${aguinaldo(sueldo).toFixed(2)}`;
   vacacionesTabla.textContent = `${diasVacaciones()}`;
-  remuneracionVacacionesTabla.textContent = `$${pagoVacaciones(sueldo)}`;
+  remuneracionVacacionesTabla.textContent = `$${pagoVacaciones(sueldo).toFixed(2)}`;
   
   // Sueldo bruto y neto
   const sueldoBrutoTabla = document.querySelector(".sueldoBrutoTabla");
   const sueldoNetoTabla = document.querySelector(".sueldoNetoTabla");
 
-  sueldoBrutoTabla.textContent = `$${sueldoBruto(sueldo)}`;
-  sueldoNetoTabla.textContent = `$${sueldoNeto(sueldo)}`;
+  sueldoBrutoTabla.textContent = `$${sueldoBruto(sueldo).toFixed(2)}`;
+  sueldoNetoTabla.textContent = `$${sueldoNeto(sueldo).toFixed(2)}`;
 };
