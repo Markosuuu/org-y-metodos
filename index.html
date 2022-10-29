@@ -16,146 +16,153 @@
   <body>
     <div class="container text-light rounded p-5 my-md-5 py-3">
       <h1 class="text-center mb-5">Liquidación de sueldo</h1>
-      <div class="row">
-        <span class="fw-bold">Datos personales:</span>
-        <!-- Nombre -->
-        <div class="col-12 col-lg-6">
-          <div class="input-group mb-3 input-group-dark">
-            <span class="input-group-text">Nombre</span>
-            <input type="text" class="form-control nombre" required />
+      <form onsubmit="deshabilitar(event)">
+        <div class="row">
+          <span class="fw-bold">Datos personales:</span>
+          <!-- Nombre -->
+          <div class="col-12 col-lg-6">
+            <div class="input-group mb-3 input-group-dark">
+              <span class="input-group-text">Nombre</span>
+              <input type="text" class="form-control nombre" required />
+            </div>
+          </div>
+
+          <!-- Apellido -->
+          <div class="col-12 col-lg-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Apellido</span>
+              <input type="text" class="form-control apellido" required />
+            </div>
+          </div>
+
+          <!-- Nro legajo -->
+          <div class="col-12 col-lg-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Nro Legajo</span>
+              <input type="number" class="form-control legajo" required />
+            </div>
+          </div>
+
+          <!-- Sueldo básico -->
+          <div class="col-12 col-lg-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Sueldo básico</span>
+              <input type="number" class="form-control sueldo" required />
+            </div>
+          </div>
+
+          <!-- Fecha de ingreso -->
+          <div class="col-12 col-lg-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">¿Qué fecha de ingreso?</span>
+              <input type="date" class="form-control fecha" required />
+            </div>
+          </div>
+
+          <hr />
+          <span class="fw-bold">Presentismo:</span>
+          <!-- Faltas injustificadas -->
+          <div class="col-12 col-md-4">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Faltas sin justificar</span>
+              <input
+                type="number"
+                class="form-control faltas-no-justificadas"
+              />
+            </div>
+          </div>
+          <!-- Faltas por licencia -->
+          <div class="col-12 col-md-4">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Licencias tomadas</span>
+              <input type="number" class="form-control faltas-justificadas" />
+            </div>
+          </div>
+          <!-- Faltas en feriados -->
+          <div class="col-12 col-md-4">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Faltas en feriados</span>
+              <input type="number" class="form-control faltas-feriados" />
+            </div>
+          </div>
+          <hr />
+
+          <!-- Horas extras al 50%-->
+          <div class="col-12 col-lg-6">
+            <span class="fw-bold">Lunes a viernes:</span>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Horas extras</span>
+              <input type="number" class="form-control extrasAl50" />
+            </div>
+          </div>
+          <!-- Horas extras al 100%-->
+          <div class="col-12 col-lg-6">
+            <span class="fw-bold">Sábados, domingos y feriados:</span>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Horas extras</span>
+              <input type="number" class="form-control extrasAl100" />
+            </div>
+          </div>
+          <hr />
+
+          <!-- Opción calcular aguinaldo -->
+          <div class="col-6" id="aguinaldo">
+            <span>¿Calcular aguinaldo?</span><br />
+            <div class="form-check ms-3">
+              <input
+                class="form-check-input radioAguinaldo"
+                id="flexRadioDefault1"
+                type="radio"
+                name="aguinaldo"
+                value="Si"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Si
+              </label>
+            </div>
+            <div class="form-check ms-3">
+              <input
+                class="form-check-input radioAguinaldo"
+                id="flexRadioDefault2"
+                type="radio"
+                name="aguinaldo"
+                value="No"
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                No
+              </label>
+            </div>
+          </div>
+
+          <!--  Opciones calcular vacaciones -->
+          <div class="col-6">
+            <span class="mt-4">¿Calcular vacaciones?</span><br />
+            <div class="form-check ms-3">
+              <input
+                class="form-check-input radioVacaciones"
+                id="RadioDefault1"
+                type="radio"
+                name="vacaciones"
+                value="Si"
+              />
+              <label class="form-check-label" for="RadioDefault1"> Si </label>
+            </div>
+            <div class="form-check ms-3 mb-3">
+              <input
+                class="form-check-input radioVacaciones"
+                id="RadioDefault2"
+                type="radio"
+                name="vacaciones"
+                value="No"
+              />
+              <label class="form-check-label" for="RadioDefault2"> No </label>
+            </div>
           </div>
         </div>
 
-        <!-- Apellido -->
-        <div class="col-12 col-lg-6">
-          <div class="input-group mb-3">
-            <span class="input-group-text">Apellido</span>
-            <input type="text" class="form-control apellido" required />
-          </div>
-        </div>
-
-        <!-- Nro legajo -->
-        <div class="col-12 col-lg-6">
-          <div class="input-group mb-3">
-            <span class="input-group-text">Nro Legajo</span>
-            <input type="number" class="form-control legajo" required />
-          </div>
-        </div>
-
-        <!-- Sueldo básico -->
-        <div class="col-12 col-lg-6">
-          <div class="input-group mb-3">
-            <span class="input-group-text">Sueldo básico</span>
-            <input type="number" class="form-control sueldo" required />
-          </div>
-        </div>
-
-        <!-- Fecha de ingreso -->
-        <div class="col-12 col-lg-6">
-          <div class="input-group mb-3">
-            <span class="input-group-text">¿Qué fecha de ingreso?</span>
-            <input type="date" class="form-control fecha" required />
-          </div>
-        </div>
-
-        <hr />
-        <span class="fw-bold">Presentismo:</span>
-        <!-- Faltas injustificadas -->
-        <div class="col-12 col-md-4">
-          <div class="input-group mb-3">
-            <span class="input-group-text">Faltas sin justificar</span>
-            <input type="number" class="form-control faltas-no-justificadas" />
-          </div>
-        </div>
-        <!-- Faltas por licencia -->
-        <div class="col-12 col-md-4">
-          <div class="input-group mb-3">
-            <span class="input-group-text">Licencias tomadas</span>
-            <input type="number" class="form-control faltas-justificadas" />
-          </div>
-        </div>
-        <!-- Faltas en feriados -->
-        <div class="col-12 col-md-4">
-          <div class="input-group mb-3">
-            <span class="input-group-text">Faltas en feriados</span>
-            <input type="number" class="form-control faltas-feriados" />
-          </div>
-        </div>
-        <hr />
-
-        <!-- Horas extras al 50%-->
-        <div class="col-12 col-lg-6">
-          <span class="fw-bold">Lunes a viernes:</span>
-          <div class="input-group mb-3">
-            <span class="input-group-text">Horas extras</span>
-            <input type="number" class="form-control extrasAl50" />
-          </div>
-        </div>
-        <!-- Horas extras al 100%-->
-        <div class="col-12 col-lg-6">
-          <span class="fw-bold">Sábados, domingos y feriados:</span>
-          <div class="input-group mb-3">
-            <span class="input-group-text">Horas extras</span>
-            <input type="number" class="form-control extrasAl100" />
-          </div>
-        </div>
-        <hr />
-
-        <!-- Opción calcular aguinaldo -->
-        <div class="col-6" id="aguinaldo">
-          <span>¿Calcular aguinaldo?</span><br />
-          <div class="form-check ms-3">
-            <input
-              class="form-check-input radioAguinaldo"
-              id="flexRadioDefault1"
-              type="radio"
-              name="aguinaldo"
-              value="Si"
-            />
-            <label class="form-check-label" for="flexRadioDefault1"> Si </label>
-          </div>
-          <div class="form-check ms-3">
-            <input
-              class="form-check-input radioAguinaldo"
-              id="flexRadioDefault2"
-              type="radio"
-              name="aguinaldo"
-              value="No"
-            />
-            <label class="form-check-label" for="flexRadioDefault2"> No </label>
-          </div>
-        </div>
-
-        <!--  Opciones calcular vacaciones -->
-        <div class="col-6">
-          <span class="mt-4">¿Calcular vacaciones?</span><br />
-          <div class="form-check ms-3">
-            <input
-              class="form-check-input radioVacaciones"
-              id="RadioDefault1"
-              type="radio"
-              name="vacaciones"
-              value="Si"
-            />
-            <label class="form-check-label" for="RadioDefault1"> Si </label>
-          </div>
-          <div class="form-check ms-3 mb-3">
-            <input
-              class="form-check-input radioVacaciones"
-              id="RadioDefault2"
-              type="radio"
-              name="vacaciones"
-              value="No"
-            />
-            <label class="form-check-label" for="RadioDefault2"> No </label>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Botón enviar -->
-      <button class="btn btn-primary" onclick="liquidacion()">
-        Enviar datos
-      </button>
+        <!-- Botón enviar -->
+        <button class="btn btn-primary" onclick="datos()">Enviar datos</button>
+      </form>
 
       <!-- Salida de datos -->
       <div class="cont d-none mt-3">
